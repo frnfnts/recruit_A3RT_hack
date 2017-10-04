@@ -1,0 +1,5 @@
+build:
+- pip install -r requirements.txt
+env:
+  APP_COMMAND: python index.py
+test: mocha
