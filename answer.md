@@ -10,7 +10,9 @@ ex. ```python index.py 幸せ```
 - requests 2.10.0
 - 環境変数 TEXTKEY (Text Suggest APIのAPI Key)
 - 環境変数 TYPOKEY (Proofreading APIのAPI Key)
+- 文字コードがutf-8のターミナル *1
 
+*1: zshで`export LANG=ja_JP.UTF-8` とするか コマンドプロンプトで`chcp 65001`とすると設定できます。
 
 
 ## 動作アルゴリズム
