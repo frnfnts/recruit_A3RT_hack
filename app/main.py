@@ -1,12 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import random
+from PhraseClient import PhraseClient
 
 def main(argv):
-  # このコードは引数と標準出力を用いたサンプルコードです。
-  # このコードは好きなように編集・削除してもらって構いません。
-  # ---
-  # This is a sample code to use arguments and outputs.
-  # Edit and remove this code as you like.
+    sample_terms = [u"私", u"幸せ", u"神", u"人間", u"幸福", u"人生", u"酒", u"不幸", u"孤独", u"時", u"金"]
 
-  for i, v in enumerate(argv):
-    print("argv[{0}]: {1}".format(i, v))
+    if len(argv) < 1:
+        idx = random.randint(0, len(sample_terms)-1)
+        text = sample_terms[idx]
+    else:
+        text = argv[0].decode("shift-jis")
+
+    client = PhraseClient()
+    if client.check_typo(text)[0] == 1:
+        print "正しい日本語の単語を入力してください"
+        return
+    text = client.process(text)
+    print text.encode("utf-8")
